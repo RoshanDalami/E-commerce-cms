@@ -1,0 +1,55 @@
+"use client";
+import { useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/Firebase/config";
+import { useEffect } from "react";
+import Image from "next/image";
+import OrderProductCard from "../Components/orderCard";
+
+export default function Orders() {
+  const [orders, setOrders] = useState([{}]);
+  const getOrders = async () => {
+    const dbRef = collection(db, "orders");
+    const response = await getDocs(dbRef);
+    const data = response.docs.map((doc) => ({ ...doc.data() }));
+    setOrders(data);
+    console.log(data);
+  };
+  useEffect(() => {
+    getOrders();
+  }, []);
+  return (
+    <>
+      <main>
+        {orders?.map((item:any, index) => {
+          return (
+            <div key={index} className="border-[1px] border-black p-4 my-10 mx-10 md:mx-20 rounded-lg">
+               <h1 className="text-3xl font-bold  "> Product Details</h1> 
+              <div className="flex flex-wrap items-center justify-center gap-6 my-3">
+                {item.items?.map((product: any, index: number) => {
+                  return (<>
+                      <OrderProductCard key={index} image={product.image} title={product.title}  amount={product.amount} price={product.price} />
+                  </>
+                  );
+                })}
+              </div>
+              <h1 className="text-3xl">Total amount : Rs {' '}{item.totalAmount}</h1>
+                <hr />
+              <div key={index} className="mt-2">
+                <h1 className="text-2xl font-bold underline">Shipping Address</h1>
+                  <p>Name : {item.address?.fullname}</p>
+                  <p>Email : {item.address?.email}</p>
+                  <p>Phone : {item.address?.phone}</p>
+                  <p>Address 1 : {item.address?.address1}</p>
+                  <p>Address 2 : {item.address?.address2}</p>
+                  <p>City : {item.address?.city}</p>
+                  <p>State : {item.address?.state}</p>
+                  <p>Pin code : {item.address?.postal}</p>
+              </div>
+            </div>
+          );
+        })}
+      </main>
+    </>
+  );
+}
