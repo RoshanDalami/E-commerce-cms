@@ -2,12 +2,17 @@
 import Image from "next/image";
 
 import Link from "next/link";
+import { db } from "@/Firebase/config";
+import { deleteDoc, doc } from "firebase/firestore";
+import BasicModal from "./Modal";
 
-import { useContext } from "react";
+
+
 
 export default function ProductCard(props: any) {
-  const onEditHandler = () => {
-    return null;
+  const onDeleteHandler = async(id:any) => {
+      const dbRef = doc(db,'Products',id)
+      await deleteDoc(dbRef)
   };
 
   return (
@@ -27,15 +32,17 @@ export default function ProductCard(props: any) {
           <div className="flex justify-between items-center">
             <p className="text-xl">Rs{" "}{props.price}</p>
             <div className="flex flex-col gap-3">
-              <button
+              {/* <button
                 className="px-6 py-3 bg-green-600 text-white rounded-xl hover:scale-110 transition duration-300"
-                onClick={onEditHandler}
+                onClick={()=>{onEditHandler()}}
               >
                 Edit
-              </button>
+              </button> */}
+              <BasicModal formdata={props.formdata} id={props.id} />
+
               <button
                 className="px-6 py-3 bg-red-600 text-white rounded-xl hover:scale-110 transition duration-300"
-                onClick={onEditHandler}
+                onClick={()=>{onDeleteHandler(props.id)}}
               >
                 Delete
               </button>

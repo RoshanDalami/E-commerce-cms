@@ -18,9 +18,23 @@ export default function Orders() {
   useEffect(() => {
     getOrders();
   }, []);
+
+  if(orders.length === 0){
+    return(
+      <>
+      <h1 className="text-3xl font-bold text-center ml-[17rem]">Orders</h1>
+      <div className="flex items-center justify-center mt-20 ml-[17rem] ">
+        
+        <p className="text-xl opacity-70">no order yet...</p>
+      </div>
+      </>
+    )
+  }
+
   return (
     <>
-      <main>
+      <main className="ml-[17rem]">
+        <h1 className="text-3xl font-bold">Orders</h1>
         {orders?.map((item:any, index) => {
           return (
             <div key={index} className="border-[1px] border-black p-4 my-10 mx-10 md:mx-20 rounded-lg">
@@ -33,7 +47,7 @@ export default function Orders() {
                   );
                 })}
               </div>
-              <h1 className="text-3xl">Total amount : Rs {' '}{item.totalAmount}</h1>
+              <h1 className="text-3xl" key={index}>Total amount : Rs {' '}{item.totalAmount}</h1>
                 <hr />
               <div key={index} className="mt-2">
                 <h1 className="text-2xl font-bold underline">Shipping Address</h1>

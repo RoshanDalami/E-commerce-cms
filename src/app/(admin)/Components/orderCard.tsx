@@ -6,9 +6,7 @@ import Link from "next/link";
 import { useContext } from "react";
 
 export default function OrderProductCard(props: any) {
-  const onEditHandler = () => {
-    return null;
-  };
+
 
   return (
     <>
