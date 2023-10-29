@@ -5,7 +5,7 @@ import Modal from "@mui/material/Modal";
 import { FormEvent, useEffect, useState } from "react";
 import { db, storage } from "@/Firebase/config";
 import ModelComp from "./ModalComp";
-
+import NewModel from "./ModelDemo";
 import { doc, updateDoc } from "firebase/firestore";
 
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
@@ -142,7 +142,7 @@ export default function BasicModal({ formdata, id }: any) {
       </button>
       {
         open && 
-      <ModelComp
+      <NewModel
         closeHandler={handleClose}
       >
         <div className="flex items-center justify-center ">
@@ -269,9 +269,16 @@ export default function BasicModal({ formdata, id }: any) {
               >
                 Update
               </button>
+              <button
+                className="bg-red-600 py-2 rounded text-white"
+                onClick={handleClose}
+              >
+                cancel
+              </button>
+
             </form>
           </div>
-      </ModelComp>
+      </NewModel>
       }
     </div>
   );
