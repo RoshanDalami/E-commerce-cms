@@ -11,7 +11,7 @@ export default function Orders() {
   const getOrders = async () => {
     const dbRef = collection(db, "orders");
     const response = await getDocs(dbRef);
-    const data = response.docs.map((doc) => ({ ...doc.data() }));
+    const data = response.docs.map((doc) => ({ ...doc.data(),id:doc.id }));
     setOrders(data);
     console.log(data);
   };
@@ -47,6 +47,7 @@ console.log(orders)
                     <>
                       <OrderProductCard
                         key={index}
+                        id={item.id}
                         image={product.image}
                         title={product.title}
                         amount={product.amount}
