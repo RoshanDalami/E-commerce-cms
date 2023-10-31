@@ -45,6 +45,7 @@ export default function Coupon() {
               }
               placeholder="coupon code"
               className="border-2 border-gray-300 py-2 px-2  rounded-md"
+              required
             />
           </div>
           <div className="flex flex-col gap-3">
@@ -60,6 +61,7 @@ export default function Coupon() {
               }
               placeholder="coupon discount"
               className="border-2 border-gray-300 py-2 px-2  rounded-md w-4/4"
+              required
             />
           </div>
           <button className="bg-indigo-600 px-10 py-2 rounded-md text-white"type="submit" >add</button>

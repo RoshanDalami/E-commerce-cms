@@ -6,8 +6,6 @@ import Link from "next/link";
 import { useContext } from "react";
 
 export default function OrderProductCard(props: any) {
-
-
   return (
     <>
       <div className="w-[350px] shadow-lg   ">
@@ -22,9 +20,14 @@ export default function OrderProductCard(props: any) {
         <div className="bg-white px-4 py-2 rounded-lg ">
           <h1 className="text-xl font-bold">{props.title}</h1>
           <div className="flex justify-between items-center">
-            <p>Rs {' '}{props.price}</p>
-            <p>No. of Amount = {" "} {props.amount}</p>
+            <p>Rs {props.price}</p>
+            <p>No. of Amount = {props.amount}</p>
           </div>
+          <p className="flex">
+            Code ={" "}
+            {props.code !== "" ? <p> {" "} {props.code} </p> : <p>no code applied</p>}
+          </p>
+
         </div>
       </div>
     </>
