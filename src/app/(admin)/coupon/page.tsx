@@ -36,7 +36,7 @@ export default function Coupon() {
             <h1 className="text-2xl font-bold">Coupon Code</h1>
             <input
               type="text"
-              value={couponDetails.couponCode}
+              value={couponDetails.couponCode.toUpperCase()}
               onChange={(e) =>
                 setCouponDetails({
                   ...couponDetails,

@@ -22,6 +22,7 @@ export default function AddProduct() {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    afterDiscountPrice:'',
     price: "",
     imageurl: "",
     imageurl1: "",
@@ -92,6 +93,7 @@ export default function AddProduct() {
       const docRef = await addDoc(collection(db, "Products"), {
         title: formData.title,
         description: formData.description,
+        afterDiscountPrice:formData.afterDiscountPrice,
         price: formData.price,
         imageulr: imageUrl,
         imageulr1: imageUrl1,
@@ -105,6 +107,7 @@ export default function AddProduct() {
     setFormData({
       title: "",
     description: "",
+    afterDiscountPrice:'',
     price: "",
     imageurl: "",
     imageurl1: "",
@@ -221,6 +224,20 @@ export default function AddProduct() {
             required
             className="text-black py-2 px-4 border-[1px] border-gray-400 rounded"
             placeholder="price"
+          />
+        </div>
+        <div className="flex flex-col gap-3">
+          <label htmlFor="">Before Discount Price</label>
+          <h1 className=" sr-only">Actual price Have naming mistake </h1>
+          <input
+            type="number"
+            onChange={(e) => {
+              setFormData({ ...formData, afterDiscountPrice: e.target.value });
+            }}
+            value={formData.afterDiscountPrice}
+            required
+            className="text-black py-2 px-4 border-[1px] border-gray-400 rounded"
+            placeholder="price after discount"
           />
         </div>
         <button className="bg-blue-600 py-2 rounded text-white" type="submit" >

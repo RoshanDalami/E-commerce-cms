@@ -18,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [products]);
 
   console.log(products);
 

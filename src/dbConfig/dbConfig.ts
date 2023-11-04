@@ -10,7 +10,7 @@ export async function connect(){
         })
 
         connection.on('error',(err)=>{
-            console.log('Could not connect to database ' + err);
+            console.log('Could not connect to database from dbConfig ' + err);
             process.exit();
         })
 
