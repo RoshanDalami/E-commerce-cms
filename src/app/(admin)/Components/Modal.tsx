@@ -27,6 +27,7 @@ export default function BasicModal({ formdata, id }: any) {
   const [formData, setFormData] = useState({
     title: formdata.title,
     description: formdata.description,
+    afterDiscountPrice:formdata.afterDiscountPrice,
     price: formdata.price,
     imageurl:formdata.imageulr, 
     imageurl1:formdata.imageulr1, 
@@ -111,6 +112,7 @@ export default function BasicModal({ formdata, id }: any) {
       await updateDoc(dbRef, {
         title: formData.title,
         description: formData.description,
+        afterDiscountPrice:formData.afterDiscountPrice,
         price: formData.price,
         imageulr: imageUrl,
         imageulr1: imageUrl1,
@@ -120,6 +122,7 @@ export default function BasicModal({ formdata, id }: any) {
       setFormData({
         title: "",
         description: "",
+        afterDiscountPrice:'',
         price: "",
         imageurl: "",
         imageurl1: "",
@@ -259,6 +262,18 @@ export default function BasicModal({ formdata, id }: any) {
                     setFormData({ ...formData, price: e.target.value });
                   }}
                   value={formData.price}
+                  required
+                  className="text-black border-[1px] border-gray-400 rounded"
+                />
+              </div>
+              <div className="flex flex-col gap-3">
+                <label htmlFor="">Price Before Discount</label>
+                <input
+                  type="number"
+                  onChange={(e) => {
+                    setFormData({ ...formData, afterDiscountPrice: e.target.value });
+                  }}
+                  value={formData.afterDiscountPrice}
                   required
                   className="text-black border-[1px] border-gray-400 rounded"
                 />

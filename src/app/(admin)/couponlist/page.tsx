@@ -26,7 +26,7 @@ export default function CouponList() {
   };
   useEffect(() => {
     getCouponList();
-  }, [couponList]);
+  }, []);
 
   const couponDeleteHandler = async (id: string) => {
     const dbRef = doc(db, "coupon", id);

@@ -18,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     getProducts();
-  }, [products]);
+  }, []);
 
   console.log(products);
 
@@ -33,6 +33,7 @@ export default function Home() {
             <ProductCard
               key={index}
               image={product.imageulr}
+              afterDiscountPrice={product.afterDiscountPrice}
               description={product.description}
               title={product.title}
               price={product.price}
