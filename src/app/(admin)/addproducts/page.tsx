@@ -22,7 +22,7 @@ export default function AddProduct() {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    afterDiscountPrice:'',
+    afterDiscountPrice: "",
     price: "",
     imageurl: "",
     imageurl1: "",
@@ -83,7 +83,7 @@ export default function AddProduct() {
     }
   }, [file3]);
   console.log(imageUrl);
-  const onSubmitHandler = async (e:FormEvent) => {
+  const onSubmitHandler = async (e: FormEvent) => {
     e.preventDefault();
 
     try {
@@ -93,12 +93,12 @@ export default function AddProduct() {
       const docRef = await addDoc(collection(db, "Products"), {
         title: formData.title,
         description: formData.description,
-        afterDiscountPrice:formData.afterDiscountPrice,
+        afterDiscountPrice: formData.afterDiscountPrice,
         price: formData.price,
         imageulr: imageUrl,
         imageulr1: imageUrl1,
         imageulr2: imageUrl2,
-        imageulr3: imageUrl3
+        imageulr3: imageUrl3,
       });
       console.log("Document written with ID", docRef.id);
     } catch (error) {
@@ -106,16 +106,15 @@ export default function AddProduct() {
     }
     setFormData({
       title: "",
-    description: "",
-    afterDiscountPrice:'',
-    price: "",
-    imageurl: "",
-    imageurl1: "",
-    imageurl2: "",
-    imageurl3: "",
+      description: "",
+      afterDiscountPrice: "",
+      price: "",
+      imageurl: "",
+      imageurl1: "",
+      imageurl2: "",
+      imageurl3: "",
     });
-    router.replace('/')
-
+    router.replace("/");
   };
 
   const getData = async () => {
@@ -126,125 +125,154 @@ export default function AddProduct() {
 
   return (
     <main className="ml-[17rem]">
-
-    <div className="flex items-center justify-center min-h-screen flex-col gap-6 m-4">
-
+      <div className="flex items-center justify-center min-h-screen flex-col gap-6 m-4">
         <div className="text-2xl font-bold">
-           <h1>Add Products</h1> 
+          <h1>Add Products</h1>
         </div>
 
-      <form
-        action=""
-        className="flex gap-3 flex-col"
-        onSubmit={onSubmitHandler}
-      >
-        {/* first Image  */}
-        <div className="flex flex-col">
-          <label htmlFor="">Image</label>
-          <input
-            type="file"
-            onChange={(e) => {
-              setFile(e.target.files![0]);
-            }}
-            className="border-[1px] border-black rounded"
-          />
-          {imageUrl ? <Image src={imageUrl} alt="image preview" width={100} height={100}/>:null}
-        </div>
-        {/* second image  */}
-        <div className="flex flex-col">
-          <label htmlFor="">Image 1</label>
-          <input
-            type="file"
-            onChange={(e) => {
-              setFile1(e.target.files![0]);
-            }}
-            className="border-[1px] border-black rounded"
-          />
-          {imageUrl1 ? <Image src={imageUrl1} alt="image preview" width={100} height={100}/>:null}
-        </div>
-        {/* third image  */}
-        <div className="flex flex-col">
-          <label htmlFor="">Image 2</label>
-          <input
-            type="file"
-            onChange={(e) => {
-              setFile2(e.target.files![0]);
-            }}
-            className="border-[1px] border-black rounded"
-          />
-          {imageUrl2 ? <Image src={imageUrl2} alt="image preview" width={100} height={100}/>:null}
-        </div>
-        {/* fourth image  */}
-        <div className="flex flex-col">
-          <label htmlFor="">Image 3</label>
-          <input
-            type="file"
-            onChange={(e) => {
-              setFile3(e.target.files![0]);
-            }}
-            className="border-[1px] border-black rounded"
-          />
-          {imageUrl3 ? <Image src={imageUrl3} alt="image preview" width={100} height={100}/>:null}
-        </div>
-        {/* details  */}
-        <div className="flex flex-col ">
-          <label htmlFor="">Title</label>
-          <input
-            type="text"
-            onChange={(e) => {
-              setFormData({ ...formData, title: e.target.value });
-            }}
-            value={formData.title}
-            required
-            className="text-black  py-2 px-4  border-[1px] border-gray-400 rounded"
-            placeholder="title"
-          />
-        </div>
-        <div className="flex flex-col gap-3">
-          <label htmlFor="">Description</label>
-          <input
-            type="text"
-            onChange={(e) => {
-              setFormData({ ...formData, description: e.target.value });
-            }}
-            value={formData.description}
-            required
-            className="text-black  py-2 px-4  border-[1px] border-gray-400  rounded "
-            placeholder="description"
-          />
-        </div>
-        <div className="flex flex-col gap-3">
-          <label htmlFor="">Price</label>
-          <input
-            type="number"
-            onChange={(e) => {
-              setFormData({ ...formData, price: e.target.value });
-            }}
-            value={formData.price}
-            required
-            className="text-black py-2 px-4 border-[1px] border-gray-400 rounded"
-            placeholder="price"
-          />
-        </div>
-        <div className="flex flex-col gap-3">
-          <label htmlFor="">Before Discount Price</label>
-          <h1 className=" sr-only">Actual price Have naming mistake </h1>
-          <input
-            type="number"
-            onChange={(e) => {
-              setFormData({ ...formData, afterDiscountPrice: e.target.value });
-            }}
-            value={formData.afterDiscountPrice}
-            required
-            className="text-black py-2 px-4 border-[1px] border-gray-400 rounded"
-            placeholder="price after discount"
-          />
-        </div>
-        <button className="bg-blue-600 py-2 rounded text-white" type="submit" >
-          Submit
-        </button>
-      </form>
-    </div>
+        <form
+          action=""
+          className="flex gap-3 flex-col"
+          onSubmit={onSubmitHandler}
+        >
+          {/* first Image  */}
+          <div className="flex flex-col">
+            <label htmlFor="">Image</label>
+            <input
+              type="file"
+              onChange={(e) => {
+                setFile(e.target.files![0]);
+              }}
+              className="border-[1px] border-black rounded"
+            />
+            {imageUrl ? (
+              <Image
+                src={imageUrl}
+                alt="image preview"
+                width={100}
+                height={100}
+              />
+            ) : null}
+          </div>
+          {/* second image  */}
+          <div className="flex flex-col">
+            <label htmlFor="">Image 1</label>
+            <input
+              type="file"
+              onChange={(e) => {
+                setFile1(e.target.files![0]);
+              }}
+              className="border-[1px] border-black rounded"
+            />
+            {imageUrl1 ? (
+              <Image
+                src={imageUrl1}
+                alt="image preview"
+                width={100}
+                height={100}
+              />
+            ) : null}
+          </div>
+          {/* third image  */}
+          <div className="flex flex-col">
+            <label htmlFor="">Image 2</label>
+            <input
+              type="file"
+              onChange={(e) => {
+                setFile2(e.target.files![0]);
+              }}
+              className="border-[1px] border-black rounded"
+            />
+            {imageUrl2 ? (
+              <Image
+                src={imageUrl2}
+                alt="image preview"
+                width={100}
+                height={100}
+              />
+            ) : null}
+          </div>
+          {/* fourth image  */}
+          <div className="flex flex-col">
+            <label htmlFor="">Image 3</label>
+            <input
+              type="file"
+              onChange={(e) => {
+                setFile3(e.target.files![0]);
+              }}
+              className="border-[1px] border-black rounded"
+            />
+            {imageUrl3 ? (
+              <Image
+                src={imageUrl3}
+                alt="image preview"
+                width={100}
+                height={100}
+              />
+            ) : null}
+          </div>
+          {/* details  */}
+          <div className="flex flex-col ">
+            <label htmlFor="">Title</label>
+            <input
+              type="text"
+              onChange={(e) => {
+                setFormData({ ...formData, title: e.target.value });
+              }}
+              value={formData.title}
+              required
+              className="text-black  py-2 px-4  border-[1px] border-gray-400 rounded"
+              placeholder="title"
+            />
+          </div>
+          <div className="flex flex-col gap-3">
+            <label htmlFor="">Description</label>
+            <input
+              type="text"
+              onChange={(e) => {
+                setFormData({ ...formData, description: e.target.value });
+              }}
+              value={formData.description}
+              required
+              className="text-black  py-2 px-4  border-[1px] border-gray-400  rounded "
+              placeholder="description"
+            />
+          </div>
+          <div className="flex flex-col gap-3">
+            <label htmlFor="">Price</label>
+            <input
+              type="number"
+              onChange={(e) => {
+                setFormData({ ...formData, price: e.target.value });
+              }}
+              value={formData.price}
+              required
+              className="text-black py-2 px-4 border-[1px] border-gray-400 rounded"
+              placeholder="price"
+            />
+          </div>
+          <div className="flex flex-col gap-3">
+            <label htmlFor="">Before Discount Price</label>
+            <h1 className=" sr-only">Actual price Have naming mistake </h1>
+            <input
+              type="number"
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  afterDiscountPrice: e.target.value,
+                });
+              }}
+              value={formData.afterDiscountPrice}
+              required
+              className="text-black py-2 px-4 border-[1px] border-gray-400 rounded"
+              placeholder="price after discount"
+            />
+          </div>
+          <button className="bg-blue-600 py-2 rounded text-white" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
     </main>
   );
 }

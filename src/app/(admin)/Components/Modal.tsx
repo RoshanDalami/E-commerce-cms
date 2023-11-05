@@ -1,6 +1,5 @@
 "use client";
 
-
 import Modal from "@mui/material/Modal";
 import { FormEvent, useEffect, useState } from "react";
 import { db, storage } from "@/Firebase/config";
@@ -27,18 +26,18 @@ export default function BasicModal({ formdata, id }: any) {
   const [formData, setFormData] = useState({
     title: formdata.title,
     description: formdata.description,
-    afterDiscountPrice:formdata.afterDiscountPrice,
+    afterDiscountPrice: formdata.afterDiscountPrice,
     price: formdata.price,
-    imageurl:formdata.imageulr, 
-    imageurl1:formdata.imageulr1, 
-    imageurl2:formdata.imageulr2, 
-    imageurl3:formdata.imageulr3, 
+    imageurl: formdata.imageulr,
+    imageurl1: formdata.imageulr1,
+    imageurl2: formdata.imageulr2,
+    imageurl3: formdata.imageulr3,
   });
 
   const [data, setData] = useState([{}]);
   console.log(formdata);
   console.log(id);
-  console.log(formData)
+  console.log(formData);
   console.log(imageUrl);
   const fileUpload = async () => {
     if (!file) {
@@ -112,7 +111,7 @@ export default function BasicModal({ formdata, id }: any) {
       await updateDoc(dbRef, {
         title: formData.title,
         description: formData.description,
-        afterDiscountPrice:formData.afterDiscountPrice,
+        afterDiscountPrice: formData.afterDiscountPrice,
         price: formData.price,
         imageulr: imageUrl,
         imageulr1: imageUrl1,
@@ -122,13 +121,12 @@ export default function BasicModal({ formdata, id }: any) {
       setFormData({
         title: "",
         description: "",
-        afterDiscountPrice:'',
+        afterDiscountPrice: "",
         price: "",
         imageurl: "",
         imageurl1: "",
         imageurl2: "",
         imageurl3: "",
-        
       });
     } catch (error) {
       console.log("something went wrong", error);
@@ -143,12 +141,9 @@ export default function BasicModal({ formdata, id }: any) {
       >
         Edit
       </button>
-      {
-        open && 
-      <NewModel
-        closeHandler={handleClose}
-      >
-        <div className="flex items-center justify-center ">
+      {open && (
+        <NewModel closeHandler={handleClose}>
+          <div className="flex items-center justify-center ">
             <form
               action=""
               className="flex gap-3 flex-col"
@@ -271,7 +266,10 @@ export default function BasicModal({ formdata, id }: any) {
                 <input
                   type="number"
                   onChange={(e) => {
-                    setFormData({ ...formData, afterDiscountPrice: e.target.value });
+                    setFormData({
+                      ...formData,
+                      afterDiscountPrice: e.target.value,
+                    });
                   }}
                   value={formData.afterDiscountPrice}
                   required
@@ -290,11 +288,10 @@ export default function BasicModal({ formdata, id }: any) {
               >
                 cancel
               </button>
-
             </form>
           </div>
-      </NewModel>
-      }
+        </NewModel>
+      )}
     </div>
   );
 }
