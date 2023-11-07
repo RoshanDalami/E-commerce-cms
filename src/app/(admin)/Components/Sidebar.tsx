@@ -26,8 +26,11 @@ export default function Sidebar(){
            <Link href={'/Home'} className="text-white py-4 px-[4rem] hover:bg-white/40 rounded-lg" >
             <h1 className="text-sm">Dashboard</h1>
            </Link>
-           <Link href={'/orders'} className="text-white py-4 px-[4rem] hover:bg-white/40 rounded-lg" >
-            <h1 className="text-sm">Orders</h1>
+           <Link href={'/orderstodeliver'} className="text-white py-4 px-[4rem] hover:bg-white/40 rounded-lg" >
+            <h1 className="text-sm">Orders  </h1>
+           </Link>
+           <Link href={'/completedorders'} className="text-white py-4 px-[4rem] hover:bg-white/40 rounded-lg" >
+            <h1 className="text-sm">Completed Orders  </h1>
            </Link>
            <Link href={'/addproducts'} className="text-white py-4 px-[4rem] hover:bg-white/40 rounded-lg" >
             <h1 className="text-sm">Add Products</h1>
