@@ -23,6 +23,7 @@ export default function AddProduct() {
     title: "",
     description: "",
     afterDiscountPrice: "",
+    category:'',
     price: "",
     imageurl: "",
     imageurl1: "",
@@ -94,6 +95,7 @@ export default function AddProduct() {
         title: formData.title,
         description: formData.description,
         afterDiscountPrice: formData.afterDiscountPrice,
+        category:formData.category,
         price: formData.price,
         imageulr: imageUrl,
         imageulr1: imageUrl1,
@@ -108,6 +110,7 @@ export default function AddProduct() {
       title: "",
       description: "",
       afterDiscountPrice: "",
+      category:'',
       price: "",
       imageurl: "",
       imageurl1: "",
@@ -236,6 +239,19 @@ export default function AddProduct() {
               required
               className="text-black  py-2 px-4  border-[1px] border-gray-400  rounded "
               placeholder="description"
+            />
+          </div>
+          <div className="flex flex-col gap-3">
+            <label htmlFor="">Category</label>
+            <input
+              type="text"
+              onChange={(e) => {
+                setFormData({ ...formData, category: e.target.value });
+              }}
+              value={formData.category}
+              required
+              className="text-black  py-2 px-4  border-[1px] border-gray-400  rounded "
+              placeholder="For eg: oversizeTshirt"
             />
           </div>
           <div className="flex flex-col gap-3">
